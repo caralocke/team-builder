@@ -1,5 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
+import React from 'react'
+import TeamMember from './components/TeamMember'
+import TeamMemberForm from './components/TeamMemberForm'
 
 function App() {
   return (
