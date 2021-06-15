@@ -4,18 +4,23 @@ export default function Form() {
     return (
         <div>
             <form>
+             <div>
               <label>Name: 
                 <input 
                   type='text'
                   name='memberName'
                 />
               </label>
+             </div>
+             <div>
               <label>Email:
                 <input 
                   type='email'
                   name='email'
                 />
               </label>
+             </div>
+             <div>
               <label>Role:
                 <select>
                   <option>-- Select a Role --</option>
@@ -24,8 +29,9 @@ export default function Form() {
                   <option>Alumni</option>
                 </select>
               </label>
-            </form>
-            
+             </div>
+             <button>Submit</button>
+            </form>            
         </div>
     )
 }
