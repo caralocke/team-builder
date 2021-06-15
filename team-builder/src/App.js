@@ -1,8 +1,7 @@
 import './App.css';
-import React, { useState, useEffect } from 'react' //imported React, useState and useEffect
+import React, { useState } from 'react' //imported React, useState
 import Form from './components/Form'
 import TeamMember from './components/TeamMember';
-import axios from 'axios';
 
 //Created a list of team members
 const listOfTeamMembers = [
