@@ -8,42 +8,54 @@ export default function Form(props) {
         const { name, value } = evt.target
         update(name, value)
     }
+
+    //create a function to handle the submit
+    const onSubmit = evt => {
+        evt.preventDefault()
+        submit()
+    }
+
     return (
         <div>
-            <form>
+            <form onSubmit={onSubmit}>
              <div>
               <label>Name: 
                 <input 
                   type='text'
                   name='memberName'
                   placeholder='Your name here'
-                  onChange={null}
+                  onChange={onChange}
                   value={values.memberName}
                 />
               </label>
              </div>
+
              <div>
               <label>Email:
                 <input 
                   type='email'
                   name='email'
                   placeholder='Your email here'
-                  onChange={null}
+                  onChange={onChange}
                   value={values.email}
                 />
               </label>
              </div>
+
              <div>
               <label>Role:
                 <select name='role' onChange={onChange} value={values.role}>
-                  <option>-- Select a Role --</option>
-                  <option>Student</option>
-                  <option>Instructor</option>
-                  <option>Alumni</option>
+                  <option value=''>-- Select a Role --</option>
+                  <option value='Student'>Student</option>
+                  <option value='Instructor'>Instructor</option>
+                  <option value='Alumni'>Alumni</option>
                 </select>
               </label>
              </div>
-             <button>Submit</button>
+
+             <div>
+                <button>Submit</button>
+             </div>
             </form>            
         </div>
     )

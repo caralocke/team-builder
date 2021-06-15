@@ -1,7 +1,8 @@
 import './App.css';
-import React, { useState } from 'react' //imported React and useState
+import React, { useState, useEffect } from 'react' //imported React, useState and useEffect
 import Form from './components/Form'
 import TeamMember from './components/TeamMember';
+import axios from 'axios';
 
 //Created a list of team members
 const listOfTeamMembers = [
@@ -17,18 +18,28 @@ const initialFormValues = {
   role:'',
 }
 
-const updateForm = () => {
-
-}
-
-const submitForm = () => {
-  
-}
-
 function App() {
-
+  
   const [ teamMembers, setTeamMembers ] = useState(listOfTeamMembers) //setting initial state
   const [ formValues, setFormValues ] = useState(initialFormValues)
+  
+  // Create a function to update the form to be used inside the inputs' `onChange` handler
+  const updateForm = (inputName, inputValue) => {
+    setFormValues({...formValues, [inputName] : inputValue})
+  }
+  
+  //Create a function to submit the form
+  const submitForm = () => {
+    const newTeamMember = {
+      memberName: formValues.memberName.trim(),
+      email: formValues.email.trim(),
+      role: formValues.role,
+    }
+    if(!newTeamMember.memberName || !newTeamMember.email || ~newTeamMember.role){
+      setTeamMembers([newTeamMember, ...teamMembers])
+      setFormValues(initialFormValues)
+    }
+  }
 
   return (
     <div className="App">
