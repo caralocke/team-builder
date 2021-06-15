@@ -1,6 +1,13 @@
 import React from 'react'
 
-export default function Form() {
+export default function Form(props) {
+    const { values, update, submit } = props //received props from App.js
+
+    //create a function to handle changing the information inside the inputs
+    const onChange = evt => {
+        const { name, value } = evt.target
+        update(name, value)
+    }
     return (
         <div>
             <form>
@@ -9,6 +16,9 @@ export default function Form() {
                 <input 
                   type='text'
                   name='memberName'
+                  placeholder='Your name here'
+                  onChange={null}
+                  value={values.memberName}
                 />
               </label>
              </div>
@@ -17,12 +27,15 @@ export default function Form() {
                 <input 
                   type='email'
                   name='email'
+                  placeholder='Your email here'
+                  onChange={null}
+                  value={values.email}
                 />
               </label>
              </div>
              <div>
               <label>Role:
-                <select>
+                <select name='role' onChange={onChange} value={values.role}>
                   <option>-- Select a Role --</option>
                   <option>Student</option>
                   <option>Instructor</option>
